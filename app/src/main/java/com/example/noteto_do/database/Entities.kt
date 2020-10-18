@@ -1,8 +1,10 @@
 package com.example.noteto_do.database
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
 @Entity(tableName = "todo_table")
 class TodoClass(
@@ -18,18 +20,15 @@ class TodoClass(
     var toDoId: Int=0
 }
 
-//@Entity(tableName = "note_table")
-//class NoteClass(
-//    @ColumnInfo(name = "Title")
-//    var title: String = "Untitled",
-//    @ColumnInfo(name = "Description")
-//    var noteDescription: String
-//){
-//    @PrimaryKey(autoGenerate = true)
-//    val noteId: Int=0
-//    init {
-//        if(title=="Untitled"){
-//            title+=" $noteId"
-//        }
-//    }
-//}
+
+@Entity(tableName = "note_table")
+class NoteClass(
+    @ColumnInfo(name = "Title")
+    var title: String = "Untitled",
+    @ColumnInfo(name = "Description")
+    var noteDescription: String= "Nothing noted."
+){
+    @ColumnInfo(name = "Id")
+    @PrimaryKey(autoGenerate = true)
+    var noteId: Int = 0
+}

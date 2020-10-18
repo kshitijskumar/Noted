@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddNote">
+    tools:context=".EditDeleteNote">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -14,7 +14,7 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <Button
-        android:id="@+id/btnAddNoteDone"
+        android:id="@+id/btnEditDelNoteDone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -26,7 +26,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline3" />
 
     <Button
-        android:id="@+id/btnAddNoteCancel"
+        android:id="@+id/btnEditDelNoteCancel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -45,7 +45,7 @@
         android:layout_marginEnd="10dp"
         android:padding="5dp"
         app:cardCornerRadius="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddNoteDone"
+        app:layout_constraintBottom_toTopOf="@+id/btnEditDelNoteDone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -58,7 +58,7 @@
             android:padding="5dp">
 
             <EditText
-                android:id="@+id/etAddNoteTitle"
+                android:id="@+id/etEditDelTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
@@ -68,7 +68,7 @@
                 android:inputType="textMultiLine|textCapSentences" />
 
             <EditText
-                android:id="@+id/etAddNoteDescription"
+                android:id="@+id/etEditDelDescription"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="3dp"

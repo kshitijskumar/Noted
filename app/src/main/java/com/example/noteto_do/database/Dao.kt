@@ -17,3 +17,19 @@ interface ToDoDao {
     fun getTasks(): LiveData<List<TodoClass>>
 
 }
+
+@Dao
+interface NoteDao{
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertNote(note:NoteClass)
+
+    @Delete
+    suspend fun deleteNote(note: NoteClass)
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun updateNote(note: NoteClass)
+
+    @Query("SELECT * FROM note_table")
+    fun getAllNotes(): LiveData<List<NoteClass>>
+}

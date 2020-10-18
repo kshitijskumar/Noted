@@ -24,4 +24,8 @@ object DatabaseModule {
     @Provides
     fun providesToDoDao(db: AppDatabase)=db.toDoDao
 
+    @Singleton
+    @Provides
+    fun providesNoteDao(db: AppDatabase)= db.noteDao
+
 }

@@ -14,20 +14,14 @@ class MainActivity : AppCompatActivity() , NoteFragment.NoteItemClicked {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.flFragment, ToDoFragment(),"TodoFragment")
-            commit()
-        }
-
+        //Navigation bar to toggle between todo and note
         topNavigationView.setOnNavigationItemSelectedListener{
             when(it.itemId){
-                R.id.itemNote -> supportFragmentManager.beginTransaction().apply {
-                    replace(R.id.flFragment,NoteFragment(this@MainActivity),"NoteFragment")
-                    commit()
+                R.id.itemNote -> {
+                    displayNoteFragment()
                 }
-                R.id.itemToDo -> supportFragmentManager.beginTransaction().apply {
-                    replace(R.id.flFragment,ToDoFragment(),"TodoFragment")
-                    commit()
+                R.id.itemToDo -> {
+                    displayTodoFragment()
                 }
             }
             true
@@ -53,6 +47,7 @@ class MainActivity : AppCompatActivity() , NoteFragment.NoteItemClicked {
         }
     }
 
+    //Callback function from note fragment to change activity
     override fun noteItemClicked(note: NoteClass) {
         val noteTitle= note.title
         val noteDescription= note.noteDescription
@@ -63,5 +58,19 @@ class MainActivity : AppCompatActivity() , NoteFragment.NoteItemClicked {
             putExtra("Description", noteDescription)
         }
         startActivity(intent)
+    }
+
+    private fun displayTodoFragment(){
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.flFragment,ToDoFragment(),"TodoFragment")
+            commit()
+        }
+    }
+
+    private fun displayNoteFragment(){
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.flFragment,NoteFragment(this@MainActivity),"NoteFragment")
+            commit()
+        }
     }
 }

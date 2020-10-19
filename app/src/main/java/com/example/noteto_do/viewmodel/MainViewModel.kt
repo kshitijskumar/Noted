@@ -1,6 +1,7 @@
 package com.example.noteto_do.viewmodel
 
 import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.noteto_do.database.NoteClass
@@ -11,6 +12,9 @@ import kotlinx.coroutines.launch
 class MainViewModel @ViewModelInject constructor(
     private val repository: MainRepository
 ) : ViewModel(){
+
+    val currentFragmentTag= MutableLiveData("TodoFragment")
+
 
     fun getAllTodoFromRepo()= repository.getAllTodo()
 

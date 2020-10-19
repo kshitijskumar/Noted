@@ -31,6 +31,8 @@ class NoteFragment(private val listener: NoteItemClicked) : Fragment(R.layout.fr
         })
     }
 
+    //Callback function from adapter which informs which note was clicked
+    //This function then calls back to main activity to open edit and delete fragment
     override fun noteClicked(note: NoteClass) {
         listener.noteItemClicked(note)
     }

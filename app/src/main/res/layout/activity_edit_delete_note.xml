@@ -20,7 +20,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:padding="10dp"
-        android:text="Done"
+        android:text="@string/done"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3" />
@@ -32,7 +32,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:padding="10dp"
-        android:text="Cancel"
+        android:text="@string/cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent" />
@@ -64,8 +64,9 @@
                 android:layout_margin="3dp"
                 android:ems="10"
                 android:gravity="start|top"
-                android:hint="Title"
-                android:inputType="textMultiLine|textCapSentences" />
+                android:hint="@string/title"
+                android:inputType="textMultiLine|textCapSentences"
+                android:autofillHints="Title" />
 
             <EditText
                 android:id="@+id/etEditDelDescription"
@@ -74,8 +75,9 @@
                 android:layout_margin="3dp"
                 android:ems="10"
                 android:gravity="start|top"
-                android:hint="Description"
-                android:inputType="textMultiLine|textCapSentences" />
+                android:hint="@string/description"
+                android:inputType="textMultiLine|textCapSentences"
+                android:autofillHints="Description" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 

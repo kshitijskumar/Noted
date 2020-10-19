@@ -1,11 +1,13 @@
 package com.example.noteto_do
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import com.example.noteto_do.database.NoteClass
 import com.example.noteto_do.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,7 +31,7 @@ class EditDeleteNote : AppCompatActivity() {
         etEditDelDescription.setText(noteDescription)
 
         btnEditDelNoteCancel.setOnClickListener {
-            finish()
+            cancelDialogueCreate()
         }
 
         btnEditDelNoteDone.setOnClickListener {
@@ -47,11 +49,25 @@ class EditDeleteNote : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.menuDel -> {
-                deleteNote(noteId)
-                finish()
+                AlertDialog.Builder(this)
+                    .setTitle("Delete Note")
+                    .setMessage("Do you want to delete this note?")
+                    .setPositiveButton("Yes"){ _, _ ->
+                        deleteNote(noteId)
+                        finish()
+                    }
+                    .setNegativeButton("No"){ _, _ ->
+                        finish()
+                    }
+                    .create()
+                    .show()
             }
         }
         return true
+    }
+
+    override fun onBackPressed() {
+        cancelDialogueCreate()
     }
 
     private fun updateNote(noteId: Int){
@@ -67,5 +83,22 @@ class EditDeleteNote : AppCompatActivity() {
 
         viewModel.deleteNoteToRepo(note)
         Toast.makeText(this,"Note Deleted",Toast.LENGTH_SHORT).show()
+    }
+
+    private fun cancelDialogueCreate(){
+        val cancelDialogue= AlertDialog.Builder(this)
+            .setTitle("Note")
+            .setMessage("Do you want to cancel? All the changes will be lost")
+            .setPositiveButton("Yes"){ _, _ ->
+                finish()
+            }
+            .setNegativeButton("No"){ dialogInterface: DialogInterface, _ ->
+
+                dialogInterface.dismiss()
+            }
+            .create()
+
+        cancelDialogue.show()
+
     }
 }

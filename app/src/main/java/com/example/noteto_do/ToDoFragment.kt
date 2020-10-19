@@ -31,11 +31,13 @@ class ToDoFragment : Fragment(R.layout.fragment_todo), TodoAdapter.CancelAndComp
 
     }
 
+    //Callback function from adapter which informs which task got canceled/deleted
     override fun cancelTodoClick(task: TodoClass) {
         viewModel.deleteTodoFromRepo(task)
         Toast.makeText(activity,"Task deleted",Toast.LENGTH_SHORT).show()
     }
 
+    //Callback function from adapter which informs which task got completed
     override fun completeTodoClick(task: TodoClass) {
         viewModel.deleteTodoFromRepo(task)
         Toast.makeText(activity,"Wonderful!! Task completed",Toast.LENGTH_SHORT).show()

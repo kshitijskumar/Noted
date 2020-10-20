@@ -14,6 +14,8 @@ class MainActivity : AppCompatActivity() , NoteFragment.NoteItemClicked {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        displayTodoFragment()
+
         //Navigation bar to toggle between todo and note
         topNavigationView.setOnNavigationItemSelectedListener{
             when(it.itemId){
